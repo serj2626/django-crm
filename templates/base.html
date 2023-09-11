@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock title %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    {% block style %}{% endblock style %}
+</head>
+<body>
+<nav class="py-6 px-6 flex justify-between bg-teal-500">
+    <a class="text-white" href="{% url 'core:home' %}">DjangoCRM</a>
+
+    <div class="space-x-2">
+        <a class="text-white " href="">О нас</a>
+        <a class="text-white py-4 px-4 bg-teal-400 rounded-xl" href="{% url 'dashboard:home' %}">Панель</a>
+        <a class="text-white py-4 px-4 bg-teal-400 rounded-xl" href="{% url 'leads:leads_list' %}">Клиенты</a>
+        {% if user.is_authenticated %}
+            <a class="text-white py-4 px-5 bg-red-600 rounded-xl" href="{% url 'users:logout' %}">Выход</a>
+        {% else %}
+            <a class="text-white py-4 px-5 bg-teal-600 rounded-xl" href="{% url 'users:login' %}">Войти</a>
+            <a class="text-white py-4 px-5 bg-teal-300 rounded-xl" href="{% url 'users:signup' %}">Регистрация</a>
+        {% endif %}
+    </div>
+</nav>
+   {% if messages %}
+            <div class="py-6 px-6">
+                {% for message in messages %}
+                    <div class="py-4 px-4 bg-yellow-200 text-center rounded-xl">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+{% block content %}
+{% endblock content %}
+
+<footer class="py-8 text-center bg-gray-200 ">
+    <p class="text-xs text-gray-700">Copyright (c) 2023 - Django CRM</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}
+    Клиенты
+{% endblock title %}
+
+{% block style %}
+
+{% endblock style %}
+
+
+{% block content %}
+    <div class="py-6 px-6">
+        <h1 class="mb-4 text-xl">Клиенты</h1>
+
+        <a href="{% url 'leads:add_lead' %}" class="inline-block py-4 px-6 bg-yellow-400 rounded-xl text-white">Добавить клиента</a>
+
+        {% if leads_list %}
+            <div class="mt-6 flex justify-between">
+                <p class="py-4 px-2 bg-gray-200 font-semibold w-full">Имя клиента</p>
+                <p class="py-4 px-2 bg-gray-200 font-semibold w-full">Приоритет</p>
+                <p class="py-4 px-2 bg-gray-200 font-semibold w-full">Статус</p>
+            </div>
+
+            {% for lead in leads_list %}
+               <div class="flex justify-between">
+                    <p class="py-2 px-2 w-full {% cycle 'bg-gray-100' '' %}">
+                        <a href="{% url 'leads:leads_detail' lead.id %}">{{ lead.name }}</a>
+                    </p>
+                    <p class="py-2 px-2 w-full {% cycle 'bg-gray-100' '' %}">{{ lead.get_priority_display }}</p>
+                    <p class="py-2 px-2 w-full {% cycle 'bg-gray-100' '' %}">{{ lead.get_status_display }}</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p class="mt-6 px-2">В базе пока нет клиентов...</p>
+        {% endif %}
+    </div>
+{% endblock %}
+

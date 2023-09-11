@@ -13,13 +13,13 @@
 
 {% block content %}
     <div class="py-6 px-6">
-        <h1 class="mb-4 text-xl">Клиенты</h1>
+        <h1 class="mb-4 text-xl">Потенциальные клиенты</h1>
 
         <a href="{% url 'leads:add_lead' %}" class="inline-block py-4 px-6 bg-yellow-400 rounded-xl text-white">Добавить клиента</a>
 
         {% if leads_list %}
             <div class="mt-6 flex justify-between">
-                <p class="py-4 px-2 bg-gray-200 font-semibold w-full">Имя клиента</p>
+                <p class="py-4 px-2 bg-gray-200 font-semibold w-full">Имя лида</p>
                 <p class="py-4 px-2 bg-gray-200 font-semibold w-full">Приоритет</p>
                 <p class="py-4 px-2 bg-gray-200 font-semibold w-full">Статус</p>
             </div>

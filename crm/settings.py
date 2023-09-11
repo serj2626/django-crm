@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'users.apps.UserConfig',
     'dashboard.apps.DashboardConfig',
     'lead.apps.LeadConfig',
+    'client.apps.ClientConfig',
 
 
 

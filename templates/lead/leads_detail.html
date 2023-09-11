@@ -7,7 +7,7 @@
         <h1 class="mb-4 text-xl">{{ lead.name }}</h1>
 
         {% if lead.description %}
-            <p class="font-semibold">Имя клиента</p>
+            <p class="font-semibold">Имя лида</p>
             <p class="mb-2">{{ lead.description }}</p>
         {% endif %}
 
@@ -29,7 +29,7 @@
             {% csrf_token %}
         </form>
 
-        {#        <a href="{% url 'leads:convert' lead.id %}" class="py-2 px-4 rounded-xl bg-blue-500 text-white">Convert to client</a>#}
+        <a href="{% url 'leads:convert' lead.id %}" class="py-2 px-4 rounded-xl bg-blue-500 text-white">Конвертировать в клиента</a>
         <a href="{% url 'leads:leads_update' lead.id %}" class="py-2 px-4 rounded-xl bg-teal-500 text-white">Редактировать</a>
         <a href="#" onclick="document.getElementById('lead_delete_form').submit();"
            class="py-2 px-4 rounded-xl bg-red-500 text-white">Удалить</a>
